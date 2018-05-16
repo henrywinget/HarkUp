@@ -37,28 +37,68 @@
     </div>
 
     <script type="text/javascript">
+        // var JSSoup = require('jssoup').default;
+        // var soup = new JSSoup('<html><head>hello</head></html>');
+        // var tag = soup.find('head');
+        // tag.name
+        // // 'head'
+        // tag.name = 'span'
+        // console.log(tag)
+
+        var cheerio = require('cheerio');
+        var jsonframe = require('jsonframe-cheerio');
+        // var $ = cheerio.load("'" + input + "'");
+        // jsonframe($);
+        // var htmlData = [];
 
         console.log("Reading script..");
 
         $("#submit-doc").click(runDoc);
 
         // var your_url = $("#url-input").val();
-        
+
         function runDoc() {
             console.log("Running..");
-        var input = $("#url-input").val();
-        $('#submit').click(function() {
-            console.log("Click works");
-            $.ajax({
-                url: input,
-                success: function (data) {
-                    alert(data);
-                    console.log(data);
-                }
-            });
-        });
+            $('#submit').click(function () {
+                // var input = $("#url-input").val();
+                // var $ = cheerio.load("'" + input + "'");
+    //             var $ = cheerio.load(`
+	// <body>
+    //     <h1>I love jsonframe!</h1>
+    //     <p>This is a line of text.</p>
+    //     <Another line of text.</p>
+	// 	<span itemprop="email"> Email: gabin@datascraper.pro  </span>
+	// <body>`);
+    //             jsonframe($);
+    //             let frame = {
+    //                 "title": "h1",
+    //                 "title2": "h2",
+    //                 "title3": "h3",
+    //                 "title4": "h4",
+    //                 "title5": "h5",
+    //                 "title2": "h6",
+    //                 "paragraph": "p",
+    //                 "list": "ul",
+    //                 "list-item": "li"
+    //             },
+    //             let result = $('body').scrape(frame, { string: true })
+    //             console.log(result)
+
+    //         });
         };
 
+
+                   // console.log("Running..");
+            // $('#submit').click(function () {
+            //     console.log("Click works");
+            //     $.ajax({
+            //         url: input,
+            //         success: function (data) {
+            //             alert(data);
+            //             console.log(data);
+            //         }
+            //     });
+            // });
         //     jQuery.ajax = (function (_ajax) {
 
         //         var protocol = location.protocol,
