@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>HarkUp</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
+    <script src="http://code.responsivevoice.org/responsivevoice.js"></script>
+</head>
+
+<body>
+
+    <div class="jumbotron">
+        <h1 class="display-4">HarkUp</h1>
+        <p class="lead">Focus on the journey while you learn on the go.</p>
+        <hr class="my-4">
+        <p>Just paste your url in the space below and be free from distraction.</p>
+        <p class="lead">
+            <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+        </p>
+    </div>
+    <div class="container">
+        <div class="input-group input-group-lg">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-lg">URL here:</span>
+            </div>
+            <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" id="url-input">
+            <input class="btn btn-primary" type="submit" value="Submit" id="submit-doc">
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+        console.log("Reading script..");
+
+        $("#submit-doc").click(runDoc);
+
+        // var your_url = $("#url-input").val();
+        
+        function runDoc() {
+            console.log("Running..");
+        var input = $("#url-input").val();
+        $('#submit').click(function() {
+            console.log("Click works");
+            $.ajax({
+                url: input,
+                success: function (data) {
+                    alert(data);
+                    console.log(data);
+                }
+            });
+        });
+        };
+
+        //     jQuery.ajax = (function (_ajax) {
+
+        //         var protocol = location.protocol,
+        //             hostname = location.hostname,
+        //             exRegex = RegExp(protocol + '//' + hostname),
+        //             YQL = 'http' + (/^https/.test(protocol) ? 's' : '') + '://query.yahooapis.com/v1/public/yql?callback=?',
+        //             query = 'select * from html where url="{URL}" and xpath="*"';
+
+        //         function isExternal(url) {
+        //             return !exRegex.test(url) && /:\/\//.test(url);
+        //         }
+
+        //         return function (o) {
+
+        //             var url = o.url;
+
+        //             if (/get/i.test(o.type) && !/json/i.test(o.dataType) && isExternal(url)) {
+
+        //                 // Manipulate options so that JSONP-x request is made to YQL
+
+        //                 o.url = YQL;
+        //                 o.dataType = 'json';
+
+        //                 o.data = {
+        //                     q: query.replace(
+        //                         '{URL}',
+        //                         url + (o.data ?
+        //                             (/\?/.test(url) ? '&' : '?') + jQuery.param(o.data)
+        //                             : '')
+        //                     ),
+        //                     format: 'xml'
+        //                 };
+
+        //                 // Since it's a JSONP request
+        //                 // complete === success
+        //                 if (!o.success && o.complete) {
+        //                     o.success = o.complete;
+        //                     delete o.complete;
+        //                 }
+
+        //                 o.success = (function (_success) {
+        //                     return function (data) {
+
+        //                         if (_success) {
+        //                             // Fake XHR callback.
+        //                             _success.call(this, {
+        //                                 responseText: data.results[0]
+        //                                     // YQL screws with <script>s
+        //                                     // Get rid of them
+        //                                     .replace(/<script[^>]+?\/>|<script(.|\s)*?\/script>/gi, '')
+        //                             }, 'success');
+        //                         }
+
+        //                     };
+        //                 })(o.success);
+
+        //             }
+
+        //             return _ajax.apply(this, arguments);
+
+        //         };
+
+        //     })(jQuery.ajax);
+
+
+
+        //     $.ajax({
+        //         url: your_url,
+        //         type: 'GET',
+        //         success: function (res) {
+        //             var text = res.responseText;
+        //             // then you can manipulate your text as you wish
+        //             alert(text);
+        //         }
+        //     });
+        // };
+    </script>
+</body>
+
+</html>
