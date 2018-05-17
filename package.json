@@ -1,22 +1,29 @@
 {
-  "name": "project-two",
-  "version": "1.0.0",
-  "description": "## Test 2",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/CourtneyDM/project-two.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/CourtneyDM/project-two/issues"
-  },
-  "homepage": "https://github.com/CourtneyDM/project-two#readme",
-  "dependencies": {
-    "node-readability": "^3.0.0"
-  }
+    "name": "project-two",
+    "version": "1.0.0",
+    "description": "## Test 2",
+    "main": "server.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node server.js",
+        "watch": "nodemon server.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/CourtneyDM/project-two.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/CourtneyDM/project-two/issues"
+    },
+    "homepage": "https://github.com/CourtneyDM/project-two#readme",
+    "dependencies": {
+        "body-parser": "^1.18.3",
+        "express": "^4.16.3",
+        "mysql": "^2.15.0",
+        "node-readability": "^3.0.0",
+        "nodemon": "^1.17.4",
+        "sequelize": "^4.37.7"
+    }
 }
