@@ -1,11 +1,6 @@
 var cheerio = require('cheerio');
 var jsonframe = require('jsonframe-cheerio');
 var read = require('node-readability');
-// var Boilerpipe = require('boilerpipe');
-// var boilerpipe = new Boilerpipe({
-//     extractor: Boilerpipe.Extractor.Article,
-//     url: 'http://www.nfl.com/news/story/0ap3000000933033/article/panthers-finalize-terms-to-sell-franchise-to-david-tepper'
-//   });
 
 
 read('http://www.nfl.com/news/story/0ap3000000933033/article/panthers-finalize-terms-to-sell-franchise-to-david-tepper', function(err, article, meta, $) {
