@@ -1,0 +1,33 @@
+{
+  "name": "harkup",
+  "version": "1.0.0",
+  "description": "an application that will convert articles into readability text, allowing TTS playback",
+  "main": "server.js",
+  "scripts": {
+    "test": "test",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/courtneydm/project-two.git"
+  },
+  "keywords": [
+    "harkup",
+    "text-to-speech",
+    "TTS"
+  ],
+  "author": "Courtney Montgomery",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/courtneydm/project-two/issues"
+  },
+  "homepage": "https://github.com/courtneydm/project-two#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "express-handlebars": "^3.0.0",
+    "mysql": "^2.15.0",
+    "node-readability": "^3.0.0",
+    "sequelize": "^4.37.8"
+  }
+}
