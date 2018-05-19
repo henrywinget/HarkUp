@@ -2,10 +2,4 @@
 .DS_Store
 .idea/
 .vscode
-<<<<<<< HEAD
 node_modules
-=======
-node_modules
-package-lock.json
-package.json
->>>>>>> c26a6607b0bc532e1ba89c6c89edc8453c3ee893

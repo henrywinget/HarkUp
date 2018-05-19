@@ -1,5 +1,4 @@
 {
-<<<<<<< HEAD
     "name": "project-two",
     "version": "1.0.0",
     "description": "## Test 2",
@@ -28,35 +27,4 @@
         "nodemon": "^1.17.4",
         "sequelize": "^4.37.7"
     }
-=======
-  "name": "harkup",
-  "version": "1.0.0",
-  "description": "Application that reads for you",
-  "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/henrywinget/HarkUp.git"
-  },
-  "author": "TeamShrimp",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/henrywinget/HarkUp/issues"
-  },
-  "homepage": "https://github.com/henrywinget/HarkUp#readme",
-  "dependencies": {
-    "body-parser": "^1.18.3",
-    "cheerio": "^1.0.0-rc.2",
-    "express": "^4.16.3",
-    "express-handlebars": "^3.0.0",
-    "jsonframe-cheerio": "^3.0.1",
-    "mysql": "^2.15.0",
-    "mysql2": "^1.5.3",
-    "node-readability": "^3.0.0",
-    "node-readability-cheerio": "^1.0.0",
-    "sequelize": "^4.37.7"
-  }
->>>>>>> c26a6607b0bc532e1ba89c6c89edc8453c3ee893
 }
