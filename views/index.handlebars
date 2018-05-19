@@ -1,0 +1,30 @@
+<div class="jumbotron">
+    <h1 class="display-4">HarkUp - Handlebars template</h1>
+    <p class="lead">Focus on the journey while you learn on the go.</p>
+    <hr class="my-4">
+    <p>Just paste your url in the space below and be free from distraction.</p>
+    <p class="lead">
+        <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+    </p>
+</div>
+
+<div class="container">
+
+    <form method="POST" action="/article">
+        <div class="input-group input-group-lg">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-lg">URL here:</span>
+            </div>
+            <input id="url" name="url" type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+            <input class="btn btn-primary" type="submit" id="submit" value="Submit">
+        </div>
+    </form>
+</div>
+<br>
+<div id="article">
+    <article class="container">
+        <input id="play" type='button' value='🔊 Play' />
+        <h2 id="article-title">{{this.title}}</h2>
+        <p id="article-content">{{this.article}}</p>
+    </article>
+</div>

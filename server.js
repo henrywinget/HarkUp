@@ -1,8 +1,9 @@
-// File to initialize the application
+// Dependencies
 const bodyParser = require("body-parser");
 const express = require("express");
+const handlebars = require("express-handlebars");
 const path = require("path");
-const read = require("node-readability");
+const routes = require("./controllers/articleRoutes");
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -11,33 +12,14 @@ const PORT = process.env.PORT || 8080;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.use(express.static("public"));
+// Set Handlebars for templates
+app.engine("handlebars", handlebars({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
 
-app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "index.html"));
-});
-
-app.post("/api/articles", (req, res) => {
-
-    // console.log(`req.body: ${JSON.stringify(req.body)}`);
-    // console.log(`req.body.name: ${req.body.name}`);
-
-    read(req.body.name, (err, article, meta) => {
-        if (err) { throw err; }
-        console.log(article.textBody);
-        console.log("---------------------------------------------------------------------------------");
-        const parsed_article = {
-            title: article.title,
-            content: article.content,
-            text: article.textBody,
-            html: article.html
-        };
-        // res.send(parsed_article);
-        res.json(parsed_article);
-        article.close();
-    });
-});
+// Use static folder to serve pages
+app.use(express.static(path.join(__dirname, "public")));
+app.use(routes);
 
 app.listen(PORT, () => {
-    console.log("server started.");
+    console.log(`Server started, listening on PORT ${PORT}...`);
 });
