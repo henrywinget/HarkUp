@@ -18,6 +18,7 @@ CREATE TABLE details (
 user_id INT NOT NULL,
 url_history TEXT,
 voice_preference INT NOT NULL,
+reason varchar(55) NOT NULL,
 time_added DATETIME,
 url_queue TEXT
 );
