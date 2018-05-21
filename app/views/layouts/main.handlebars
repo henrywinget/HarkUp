@@ -3,21 +3,35 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/style.css" />
     <title>Harkup TTS</title>
 
+    <!-- jQuery Import -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="/assets/js/app.js"></script>
-    <script src="http://code.responsivevoice.org/responsivevoice.js"></script>
-
-    <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
 </head>
 
-<body>
+<body id="body" class="mb-2 text-white bg-dark">
 
     {{{ body }}}
 
+    <!-- Include Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/5.0.3/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.0.0/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.0.0/firebaseui.css">
+
+    <!-- Font Awesome API -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
+
+    <!-- Homegrown Javascript files -->
+    <script src="/assets/js/app.js"></script>
+
+    <!-- Popper API -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+
+    <!-- ResponsiveVoice API -->
+    <script src="http://code.responsivevoice.org/responsivevoice.js"></script>
 </body>
 
 </html>

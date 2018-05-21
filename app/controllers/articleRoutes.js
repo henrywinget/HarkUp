@@ -3,9 +3,16 @@ const express = require("express");
 const router = express.Router();
 const read = require("node-readability");
 
+// Import ORM
+const orm = require("../config/orm");
+
 // Route handler for homepage
 router.get("/", (req, res) => {
     res.render("index");
+});
+
+router.get("/authentication", (req, res) => {
+    res.redirect("/");
 });
 
 // Route handler for processing article URL
@@ -32,5 +39,15 @@ async function getArticle(req, res, url) {
     }
 
 }
+
+// Route handler for new user signup
+router.post("/signup", (req, res) => {
+    const tableInput = "user_info";
+    console.log(req.body);
+    orm.createNewUser(tableInput, req.body, results => {
+        console.log("Success.");
+        res.render("dark_index");
+    });
+});
 // Export router functionality for server to use
 module.exports = router;
