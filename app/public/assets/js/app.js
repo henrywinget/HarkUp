@@ -75,6 +75,8 @@ $(() => {
         const promise = auth.createUserWithEmailAndPassword(newUser.user_email, newUser.user_password);
         promise.catch(err => alert(err.message));
 
+        console.log(`New Firebase User: ${firebaseUser}`);
+
         // Send form data to the server
         $.post("/signup", newUser);
 
