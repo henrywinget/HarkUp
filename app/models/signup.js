@@ -35,7 +35,7 @@ module.exports = function (sequelize, DataTypes) {
         len: {
           args: [6, 32],
           msg: "Username must be between 6 and 32 characters"
-        },
+        }
       }
     },
     userEmail: {
