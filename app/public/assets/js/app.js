@@ -1,5 +1,4 @@
 $(() => {
-
     // Initialize Firebase
     var config = {
         apiKey: "AIzaSyAcD-Z-rpHoK5bwrFQ5amWDJneTr-SZ59k",
@@ -11,6 +10,9 @@ $(() => {
     };
     firebase.initializeApp(config);
 
+    // Flag used to determine if user is new or existing
+    let NEW_USR_FLAG = false;
+
     // When user click the play button, playback article
     $("#play").on("click", (event) => {
         event.preventDefault();
@@ -20,6 +22,7 @@ $(() => {
 
     });
 
+    // Initialize ResponsiveVoice playback 
     function playArticle(title, content) {
         responsiveVoice.speak(title, "UK English Male");
         responsiveVoice.speak(content, "UK English Female");
@@ -35,7 +38,7 @@ $(() => {
 
         // Initialize sign-in widget from FirebaseUI web
         var uiConfig = {
-            signInSuccessUrl: "/authentication",
+            signInSuccessUrl: "/",
             signInOptions: [
                 // Leave the lines as is for the providers you want to offer your users.
                 firebase.auth.GoogleAuthProvider.PROVIDER_ID,
@@ -53,36 +56,42 @@ $(() => {
         var ui = new firebaseui.auth.AuthUI(firebase.auth());
         // The start method will wait until the DOM is loaded.
         ui.start('#firebaseui-auth-container', uiConfig);
-
     });
 
     // Event listener for when the Sign Up button is clicked
     $("#signup-btn").on("click", (e) => {
         e.preventDefault();
+        NEW_USR_FLAG = true;
 
         const newUser = {
-            firstName: $("#firstName").val().trim(),
-            lastName: $("#lastName").val().trim(),
-            email: $("#email").val().trim(),
-            password: $("#password").val().trim()
+            full_name: $("#full_name").val().trim(),
+            user_email: $("#user_email").val().trim(),
+            user_password: $("#user_password").val().trim(),
+            signup_date: moment().format("YYYY-MM-DD HH:mm:ss")
         };
 
         // User Firebase Authentication
         const auth = firebase.auth();
-        const promise = auth.createUserWithEmailAndPassword(newUser.email, newUser.password);
+        const promise = auth.createUserWithEmailAndPassword(newUser.user_email, newUser.user_password);
         promise.catch(err => alert(err.message));
 
         // Send form data to the server
-        $.post("/signup", newUser).then(data => {
-            console.log(data);
-        });
+        $.post("/signup", newUser);
+
+        NEW_USR_FLAG = false;
     });
 
     // Event listener for when the user state changes
     firebase.auth().onAuthStateChanged(firebaseUser => {
-        if (firebaseUser) {
+        if (firebaseUser && !NEW_USR_FLAG) {
             // console.log(`User logged in: ${JSON.stringify(firebaseUser.email)}`);
-            console.log(`User Details: ${JSON.stringify(firebaseUser, null, 2)}`);
+            const existing_user = {
+                full_name: firebaseUser.displayName,
+                user_email: firebaseUser.email,
+                user_date: moment().format("YYYY-MM-DD HH:mm:ss")
+            };
+            console.log(`User Details: ${JSON.stringify(firebaseUser, null, 3)}`);
+            $.post("/signin", existing_user);
         }
         else
             console.log("Not logged in");

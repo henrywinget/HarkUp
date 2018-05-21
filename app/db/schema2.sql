@@ -8,6 +8,7 @@ CREATE TABLE user_info (
 user_id INT NOT NULL AUTO_INCREMENT,
 full_name varchar (50) NOT NULL,
 user_email varchar (50) NOT NULL,
+signup_date DATETIME NOT NULL,
 PRIMARY KEY (user_id)
 );
 

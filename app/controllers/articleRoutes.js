@@ -6,14 +6,15 @@ const read = require("node-readability");
 // Import ORM
 const orm = require("../config/orm");
 
-// Route handler for homepage
+// Route handler for displaying homepage
 router.get("/", (req, res) => {
     res.render("index");
 });
 
-router.get("/authentication", (req, res) => {
-    res.redirect("/");
-});
+// TO BE DELETED IF NOT USED
+// router.get("/authentication", (req, res) => {
+//     res.redirect("/");
+// });
 
 // Route handler for processing article URL
 router.post("/article", (req, res) => {
@@ -46,8 +47,16 @@ router.post("/signup", (req, res) => {
     console.log(req.body);
     orm.createNewUser(tableInput, req.body, results => {
         console.log("Success.");
-        res.render("dark_index");
+        res.render("index");
     });
 });
+
+// Route for handling existing users signin
+router.post("/signin", (req, res) => {
+    // This route will use the ORM validateUser method to query the database for the
+    // user info submitted.
+    console.log(req.body);
+});
+
 // Export router functionality for server to use
 module.exports = router;
