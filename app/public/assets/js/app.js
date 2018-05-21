@@ -82,7 +82,7 @@ $(() => {
     firebase.auth().onAuthStateChanged(firebaseUser => {
         if (firebaseUser) {
             // console.log(`User logged in: ${JSON.stringify(firebaseUser.email)}`);
-            console.log(`User Details: ${JSON.stringify(firebaseUser.providerData, null, 2)}`);
+            console.log(`User Details: ${JSON.stringify(firebaseUser, null, 2)}`);
         }
         else
             console.log("Not logged in");
