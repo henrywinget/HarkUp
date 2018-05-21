@@ -5,7 +5,7 @@ CREATE DATABASE HarkUp;
 USE HarkUp;
 
 CREATE TABLE user_info (
-    user_id VARCHAR(60) NOT NULL,
+    user_id INT NOT NULL AUTO_INCREMENT,
     full_name varchar (60) NOT NULL,
     user_email varchar (60) NOT NULL,
     signup_date DATETIME,
