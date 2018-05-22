@@ -5,14 +5,17 @@ const read = require("node-readability");
 
 // Import ORM
 const orm = require("../config/orm");
+let user_email = null;
 
-// Route handler for homepage
+// Route handler for displaying default homepage
 router.get("/", (req, res) => {
-    res.render("index");
+    console.log("Home page requested.");
+    res.render("index", { user_email: user_email });
 });
 
-router.get("/authentication", (req, res) => {
-    res.redirect("/");
+// Route handler for getting the signup page
+router.get("/signup", (req, res) => {
+    res.render("signup");
 });
 
 // Route handler for processing article URL
@@ -40,16 +43,35 @@ async function getArticle(req, res, url) {
 
 }
 
-// Route handler for new user signup
-router.post("/signup", (req, res) => {
+// Page to load when authentiation is successful
+router.get("/user", (req, res) => {
+    console.log(`/user req.body: ${JSON.stringify(req.body)}`);
+    res.render("index", { user_email: user_email });
+});
+
+// Route handler to add new user to database
+router.post("/api/signup", (req, res) => {
     const tableInput = "user_info";
     console.log(req.body);
-    orm.createNewUser(tableInput, req.body, results => {
-        console.log("Success.");
-        res.render("dark_index");
+    orm.createNewUser(req.body, result => {
+        console.log("Successfully added new user.");
+        res.send(result);
     });
 });
 
+// Route for handling existing users signin
+router.post("/signed_in", (req, res) => {
+    // This route will use the ORM validateUser method to query the database for the
+    // user info submitted.
+    user_email = req.body.user_email;
+    console.log(`User signed in (POST/signed_in): ${JSON.stringify(req.body)}`);
+    res.render("index", { user_email: user_email });
+});
+
+// Route for handling saved list requests
+router.post("/updates", (req, res) => {
+
+});
 
 // Export router functionality for server to use
 module.exports = router;
