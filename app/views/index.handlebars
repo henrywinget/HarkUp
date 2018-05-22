@@ -1,30 +1,334 @@
-<div class="jumbotron">
-    <h1 class="display-4">HarkUp - Handlebars template</h1>
-    <p class="lead">Focus on the journey while you learn on the go.</p>
-    <hr class="my-4">
-    <p>Just paste your url in the space below and be free from distraction.</p>
-    <p class="lead">
-        <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-    </p>
-</div>
+<body class="mb-2 text-white bg-dark">
 
-<div class="container">
+    <div id="wrapper" class="toggled">
 
-    <form method="POST" action="/article">
-        <div class="input-group input-group-lg">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-lg">URL here:</span>
+
+        <!-- /#sidebar-wrapper -->
+
+
+
+
+        <!--NAVBAR-->
+        <nav class="navbar navbar-expand-lg navbar-dark   fixed-top bg-dark">
+            <div class="container">
+                <img src="public/assets/images/harkup3.png" alt="HarkUp">
+                <a href="#" class="btn btn-success" id="menu-toggle">Toggle Menu</a>
+                <!--TOGGLE BUTTON FUNCTION-->
+
+                <div id="user_div" class="nav-item"></div>
+                <div id="login_div" class="nav-item">
+                    <form class="form-inline">
+                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#register">Log In</button>
+                        <p class="or">-</p>
+                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#signup">Sign Up</button>
+                    </form>
+                </div>
             </div>
-            <input id="url" name="url" type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
-            <input class="btn btn-primary" type="submit" id="submit" value="Submit">
+        </nav>
+        <!--END NAVBAR-->
+
+        <!-- SIDEBAR -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                        Start Bootstrap
+                    </a>
+                </li>
+                <li>
+                    <a href="#">Dashboard</a>
+                </li>
+                <li>
+                    <a href="#">Shortcuts</a>
+                </li>
+                <li>
+                    <a href="#">Overview</a>
+                </li>
+                <li>
+                    <a href="#">Events</a>
+                </li>
+                <li>
+                    <a href="#">About</a>
+                </li>
+                <li>
+                    <a href="#">Services</a>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+                <li>
+                    <a href="#" class="btn btn-success " id="SignOut"> SIGN OUT </a>
+                </li>
+            </ul>
+
         </div>
-    </form>
-</div>
-<br>
-<div id="article">
+
+
+        <!--JUMBOTRON-->
+        <div class="jumbotron mt-4 bg-secondary text-center text-dark ">
+            <h1 class="display-4">HarkUp</h1>
+            <hr class="my-4">
+            <p>Just paste your url in the space below and be free from distraction.</p>
+
+            <!--URL BAR HERE-->
+            <div class="container">
+                <div class="input-group input-group-lg">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-lg">URL here:</span>
+                    </div>
+                    <input type="text" class="form-control" `aria-label="Large" aria-describedby="inputGroup-sizing-sm" id="url-input">
+                    <input class="btn btn-primary" type="submit" value="Submit" id="submit-doc">
+                </div>
+            </div>
+            <!--END URL BAR HERE-->
+
+        </div>
+        <!--END - JUMBOTRON-->
+
+
+
+
+        <div class="container">
+            <div class="player text-center">
+                <button type="button" id="button_bw" class="btn btn-primary btn-sm" onclick='buttonBackPress()'>
+                    <i class="fa fa-backward"></i>
+                </button>
+
+                <button type="button" id="button_play" class="btn
+                  btn-success btn-md" onclick='buttonPlayPress()'>
+                    <i class="fa fa-play"></i>
+                </button>
+
+                <button type="button" id="button_stop" class="btn btn-danger btn-md" onclick='buttonStopPress()'>
+                    <i class="fa fa-stop"></i>
+                </button>
+
+                <button type="button" id="button_fw" class="btn btn-primary btn-sm" onclick='buttonForwardPress()'>
+                    <i class="fa fa-forward"></i>
+                </button>
+            </div>
+        </div>
+
+
+        <!--FONTAWESOME ICONS -->
+        <div class="container fa-5x text-center">
+            <div class="row ">
+                <div class="col-lg my-auto">
+                    <div class=" mx-auto">
+                        <h1 class="mb-5 mt-5">Landing page to showcase your app, or whatever</h1>
+                        <i class="fab fa-twitter "></i>
+                        <i class="fab fa-github"></i>
+                        <i class="fab fa-facebook-square"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--END FONTAWESOME ICONS -->
+
+
+
+
+        <!-- FOOTER -->
+        <div class="row py-3">
+            <div class="col-md-7"> </div>
+            <div class="col-md text-md-right">
+                <small>&copy; SMU Coding Camp </small>
+            </div>
+        </div>
+        <!-- END FOOTER -->
+
+
+
+
+        <!-- MODAL - SIGN INNNNN - this goes inside the SIGN UP BTN -->
+        <div class="modal fade text-dark" id="register" tabindex="-1" role="dialog" aria-labelledby="register form" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Log In</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+
+                        <!-- inputting form-->
+                        <div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Email address</label>
+                                <input type="email" class="form-control" id="email_field" aria-describedby="emailHelp" placeholder="Enter email">
+                                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Password</label>
+                                <input type="password" class="form-control" id="password_field" placeholder="Password">
+                            </div>
+                            <!-- <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                            </div> -->
+                            <button onclick="login()" type="submit" class="btn btn-primary">Log In</button>
+
+
+                            <!--Google 
+                            <button type="button" class="btn btn-gplus">
+                                <i class="fa fa-google-plus pr-1"></i> Google +</button>+-->
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- END MODAL - SIGN INNNNN - this goes inside the SIGN INNN  -->
+
+
+
+
+        <!--MODAL - SIGN UP-->
+
+        <div class="modal fade text-dark" id="signup" tabindex="-1" role="dialog" aria-labelledby="signup form" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Sign Up</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- inputting form-->
+                        <div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">First Name</label>
+                                <input type="email" class="form-control" id="email_sign" aria-describedby="emailHelp" placeholder="Enter First Name">
+                                <label for="exampleInputEmail1">Last Name </label>
+                                <input type="email" class="form-control" id="email_sign" aria-describedby="emailHelp" placeholder="Enter Last Name">
+                                <label for="exampleInputEmail1">Email address</label>
+                                <input type="email" class="form-control" id="email_sign" aria-describedby="emailHelp" placeholder="Enter email">
+                                <small id="emailSignHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Choose Username</label>
+                                <input type="email" class="form-control" id="email_sign" aria-describedby="emailHelp" placeholder="Enter User Name">
+
+                                <label for="exampleInputPassword1">Password</label>
+                                <input type="password" class="form-control" id="password_sign" placeholder="Password">
+                            </div>
+
+                            <button onclick="signUp()" type="submit" class="btn btn-primary">Sign Up</button>
+                        </div>
+                        <!-- inputting form /////GOOGLE BTN 
+                        <form>
+                            <button class="btn btn-block btn-social btn-lg btn-google">
+                                <span class="fa fa-google"></span> Sign Up with Google
+                            </button>
+                        </form>-->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- END MODAL - SIGN INNNNN - this goes inside the SIGN UPPP  -->
+
+
+        <!-- TOGGLE SIDE FUNCTION -->
+        <script>
+            $("#menu-toggle").click(function (e) {
+                e.preventDefault();
+                $("#wrapper").toggleClass("toggled");
+            });
+        </script>
+        <!-- END TOGGLE SIDE FUNCTION -->
+
+
+
+        </section>
+        <div id="article">
     <article class="container">
         <input id="play" type='button' value='🔊 Play' />
         <h2 id="article-title">{{this.title}}</h2>
         <p id="article-content">{{this.article}}</p>
     </article>
 </div>
+
+        <script type="text/javascript">
+            console.log("Reading script..");
+            $("#submit-doc").click(runDoc);
+            // var your_url = $("#url-input").val();
+
+            function runDoc() {
+                console.log("Running..");
+                var input = $("#url-input").val();
+                $('#submit').click(function () {
+                    console.log("Click works");
+                    $.ajax({
+                        url: input,
+                        success: function (data) {
+                            alert(data);
+                            console.log(data);
+                        }
+                    });
+                });
+            };
+            //     jQuery.ajax = (function (_ajax) {
+            //         var protocol = location.protocol,
+            //             hostname = location.hostname,
+            //             exRegex = RegExp(protocol + '//' + hostname),
+            //             YQL = 'http' + (/^https/.test(protocol) ? 's' : '') + '://query.yahooapis.com/v1/public/yql?callback=?',
+            //             query = 'select * from html where url="{URL}" and xpath="*"';
+            //         function isExternal(url) {
+            //             return !exRegex.test(url) && /:\/\//.test(url);
+            //         }
+            //         return function (o) {
+            //             var url = o.url;
+            //             if (/get/i.test(o.type) && !/json/i.test(o.dataType) && isExternal(url)) {
+            //                 // Manipulate options so that JSONP-x request is made to YQL
+            //                 o.url = YQL;
+            //                 o.dataType = 'json';
+            //                 o.data = {
+            //                     q: query.replace(
+            //                         '{URL}',
+            //                         url + (o.data ?
+            //                             (/\?/.test(url) ? '&' : '?') + jQuery.param(o.data)
+            //                             : '')
+            //                     ),
+            //                     format: 'xml'
+            //                 };
+            //                 // Since it's a JSONP request
+            //                 // complete === success
+            //                 if (!o.success && o.complete) {
+            //                     o.success = o.complete;
+            //                     delete o.complete;
+            //                 }
+            //                 o.success = (function (_success) {
+            //                     return function (data) {
+            //                         if (_success) {
+            //                             // Fake XHR callback.
+            //                             _success.call(this, {
+            //                                 responseText: data.results[0]
+            //                                     // YQL screws with <script>s
+            //                                     // Get rid of them
+            //                                     .replace(/<script[^>]+?\/>|<script(.|\s)*?\/script>/gi, '')
+            //                             }, 'success');
+            //                         }
+            //                     };
+            //                 })(o.success);
+            //             }
+            //             return _ajax.apply(this, arguments);
+            //         };
+            //     })(jQuery.ajax);
+            //     $.ajax({
+            //         url: your_url,
+            //         type: 'GET',
+            //         success: function (res) {
+            //             var text = res.responseText;
+            //             // then you can manipulate your text as you wish
+            //             alert(text);
+            //         }
+            //     });
+            // };
+        </script>

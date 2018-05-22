@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<!-- Below is the initialization snippet for my Firebase project. It will vary for each project -->
+<script src="https://www.gstatic.com/firebasejs/5.0.3/firebase.js"></script>
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyAcD-Z-rpHoK5bwrFQ5amWDJneTr-SZ59k",
+        authDomain: "project-two-harkup.firebaseapp.com",
+        databaseURL: "https://project-two-harkup.firebaseio.com",
+        projectId: "project-two-harkup",
+        storageBucket: "project-two-harkup.appspot.com",
+        messagingSenderId: "614544647683"
+    };
+    firebase.initializeApp(config);
+</script>
+
+<body>
+    <script>
+        firebase.auth().onAuthStateChanged(user => {
+            if (user) {
+                console.log(user.displayName);
+                document.body.innerHTML = "<h1>Congrats " + user.displayName + ", you are done!</h1><h2>Now get back to what you love building</h2><h3>Need to verify your email address or reset your password? Firebase can handle all of that for you using the email you provided: " + user.email + "</h3>";
+            }
+            else {
+                console.log("no user signed in.");
+            }
+        });
+    </script>
+    <h4>Congrats, you're done! Now get back to it...</h4>
+</body>
+
+</html>
