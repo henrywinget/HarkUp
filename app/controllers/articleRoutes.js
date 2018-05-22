@@ -45,7 +45,7 @@ async function getArticle(req, res, url) {
 router.post("/signup", (req, res) => {
     const tableInput = "user_info";
     console.log(req.body);
-    orm.createNewUser(tableInput, req.body, results => {
+    orm.createNewUser(req.body, result => {
         console.log("Success.");
         res.render("index");
     });
@@ -56,6 +56,11 @@ router.post("/signin", (req, res) => {
     // This route will use the ORM validateUser method to query the database for the
     // user info submitted.
     console.log(req.body);
+});
+
+// Route for handling saved list requests
+router.post("/updates", (req, res) => {
+
 });
 
 // Export router functionality for server to use

@@ -9,7 +9,7 @@ CREATE TABLE user_info (
     full_name varchar (60) NOT NULL,
     user_email varchar (60) NOT NULL,
     signup_date DATETIME,
-    PRIMARY KEY (user_id)
+    PRIMARY KEY(user_id)
 );
 
 CREATE TABLE user_preferences (
@@ -21,6 +21,6 @@ CREATE TABLE user_preferences (
 
 CREATE TABLE user_articles (
     user_email VARCHAR(60),
-    website_url VARCHAR(100) NOT NULL DEFAULT "",
+    website_url VARCHAR(100) NOT NULL DEFAULT '',
     date_added DATETIME NOT NULL
 );
