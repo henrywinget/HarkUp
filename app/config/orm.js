@@ -12,7 +12,6 @@ function createInfoObj() {
     }
     return info;
 }
-
 // Create a user_preferences Object
 function createPrefObj() {
     const pref_table = "user_preferences";
@@ -24,7 +23,6 @@ function createPrefObj() {
     };
     return preferences;
 }
-
 // Create a user_articles Object
 function createArticleObj() {
     const article_table = "user_articles";
