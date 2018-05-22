@@ -10,9 +10,6 @@ $(() => {
     };
     firebase.initializeApp(config);
 
-    // Flag used to determine if user is new or existing
-    let NEW_USR_FLAG = false;
-
     // When user click the play button, playback article
     $("#play").on("click", (event) => {
         event.preventDefault();
@@ -30,6 +27,9 @@ $(() => {
 
     // User login
     $("#login-btn").on("click", (e) => {
+
+        e.preventDefault();
+
         // Add the FirebaseUI widget element to the DOM
         const body = document.getElementById("body");
         const fbDiv = document.createElement("div");
@@ -38,7 +38,8 @@ $(() => {
 
         // Initialize sign-in widget from FirebaseUI web
         var uiConfig = {
-            signInSuccessUrl: "/",
+            // signInSuccessURL will load whenever user signs in, based on auth state change
+            signInSuccessUrl: "/user",
             signInOptions: [
                 // Leave the lines as is for the providers you want to offer your users.
                 firebase.auth.GoogleAuthProvider.PROVIDER_ID,
@@ -50,7 +51,7 @@ $(() => {
             // Terms of service url.
             tosUrl: '<your-tos-url>'
         };
-
+        $
 
         // Initialize the FirebaseUI Widget using Firebase
         var ui = new firebaseui.auth.AuthUI(firebase.auth());
@@ -61,7 +62,6 @@ $(() => {
     // Event listener for when the Sign Up button is clicked
     $("#signup-btn").on("click", (e) => {
         e.preventDefault();
-        NEW_USR_FLAG = true;
 
         const newUser = {
             full_name: $("#full_name").val().trim(),
@@ -75,32 +75,35 @@ $(() => {
         const promise = auth.createUserWithEmailAndPassword(newUser.user_email, newUser.user_password);
         promise.catch(err => alert(err.message));
 
-        console.log(`New Firebase User: ${firebaseUser}`);
+        // console.log(`New Firebase User: ${firebaseUser}`);
 
         // Send form data to the server
-        $.post("/signup", newUser);
-
-        NEW_USR_FLAG = false;
+        $.post("/api/signup", newUser).then(data => {
+            console.log(`Created new user.`);
+        });
     });
 
     // Event listener for when the user state changes
     firebase.auth().onAuthStateChanged(firebaseUser => {
-        if (firebaseUser && !NEW_USR_FLAG) {
-            // console.log(`User logged in: ${JSON.stringify(firebaseUser.email)}`);
-            const existing_user = {
-                full_name: firebaseUser.displayName,
-                user_email: firebaseUser.email,
-                user_date: moment().format("YYYY-MM-DD HH:mm:ss")
-            };
-            console.log(`User Details: ${JSON.stringify(firebaseUser, null, 3)}`);
-            $.post("/signin", existing_user);
+        if (firebaseUser) {
+            // TODO: Create logged in template to be displayed here
+            const user = { user_email: firebaseUser.email };
+
+            console.log(`User Name: ${JSON.stringify(firebaseUser.displayName)}`);
+            console.log(`User Email: ${JSON.stringify(firebaseUser.email)}`);
+
+            // send the data to the server to be used in handlebars templates
+            $.post("/signed_in", user);
         }
-        else
-            console.log("Not logged in");
+        else { console.log("No user logged in."); }
+        // console.log("Not logged in");
     });
 
     // Event listener for when the Logout Button is clicked
     $("#logout-btn").on("click", (e) => {
+        console.log("logout button clicked.");
+        const user = { user_email: null };
+        $.post("/signed_in", user);
         firebase.auth().signOut();
     });
 });

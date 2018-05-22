@@ -1,3 +1,4 @@
+{{!--
 <div class="jumbotron">
     <h1 class="display-4">HarkUp - Handlebars template</h1>
     <p class="lead">Focus on the journey while you learn on the go.</p>
@@ -5,27 +6,12 @@
     <p>Just paste your url in the space below and be free from distraction.</p>
     <div class="lead">
         <button class="btn btn-primary btn-sm" id="login-btn" role="button">Log In</button>
-
         <button class="btn btn-primary btn-sm" id="logout-btn" role="button">Log Out</button>
+        <a href="/signup">
+            <button class="btn btn-primary btn-sm" id="signup" role="button">Sign Up</button>
+        </a>
     </div>
-    <p class="lead">
-
-        <form>
-            <label for="full_name">Full Name</label>
-            <input type="text" name="full_name" id="full_name">
-            <br>
-            <label for="user_email" aria-placeholder="Enter your email">Email</label>
-            <input type="email" name="user_email" id="user_email">
-            <br>
-            <label for="user_password" aria-placeholder="Enter a password">Password</label>
-            <input type="password" name="user_password" id="user_password">
-            <br>
-            <button class="btn btn-success btn-sm" id="signup-btn" role="button">Sign Up</button>
-            <br>
-        </form>
-    </p>
-</div>
-
+</div> --}} {{>users}}
 <div class="container">
 
     <form method="POST" action="/article">
@@ -38,11 +24,6 @@
         </div>
     </form>
 </div>
-<br>
-<div id="article">
-    <article class="container">
-        <input id="play" type='button' value='🔊 Play' />
-        <h2 id="article-title">{{this.title}}</h2>
-        <p id="article-content">{{this.article}}</p>
-    </article>
-</div>
+<!-- Include Articles partial-->
+{{!-- Create a Handlebars if statement to check the value of the user's email. --}} {{!-- If guest, don't display logout
+button. --}} {{!-- if logged in, don't display login button or sign up button --}}
