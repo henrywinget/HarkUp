@@ -12,18 +12,7 @@
         </a>
     </div>
 </div> --}} {{>users}}
-<div class="container">
 
-    <form method="POST" action="/article">
-        <div class="input-group input-group-lg">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-lg">URL here:</span>
-            </div>
-            <input id="url" name="url" type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
-            <input class="btn btn-primary" type="submit" id="submit" value="Submit">
-        </div>
-    </form>
-</div>
 <!-- Include Articles partial-->
 {{!-- Create a Handlebars if statement to check the value of the user's email. --}} {{!-- If guest, don't display logout
 button. --}} {{!-- if logged in, don't display login button or sign up button --}}
