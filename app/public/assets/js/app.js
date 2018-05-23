@@ -1,10 +1,4 @@
 $(() => {
-<<<<<<< HEAD
-    // Initialize mysql dependancies
-    var mysql = require("mysql");
-    var express = require("express");
-=======
->>>>>>> ab777892670a35cc974437425eca6ddc552e98bf
     // Initialize Firebase
     var config = {
         apiKey: "AIzaSyAcD-Z-rpHoK5bwrFQ5amWDJneTr-SZ59k",
@@ -37,7 +31,7 @@ $(() => {
         e.preventDefault();
 
         // Add the FirebaseUI widget element to the DOM
-        const body = document.getElementById("login-modal-body");
+        const body = document.getElementById("body");
         const fbDiv = document.createElement("div");
         fbDiv.setAttribute("id", "firebaseui-auth-container");
         body.appendChild(fbDiv);
@@ -75,7 +69,7 @@ $(() => {
             user_password: $("#user_password").val().trim(),
             signup_date: moment().format("YYYY-MM-DD HH:mm:ss")
         };
-        orm.create(JSON.parse(newUser.firstName), JSON.parse(newUser.lastName), JSON.parse(newUser.email), JSON.parse(newUser.password));
+
         // User Firebase Authentication
         const auth = firebase.auth();
         const promise = auth.createUserWithEmailAndPassword(newUser.user_email, newUser.user_password);

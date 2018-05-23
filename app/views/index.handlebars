@@ -14,60 +14,13 @@
 </div> --}} {{>users}}
 <div class="container">
 
-
-        <!--NAVBAR-->
-        <nav class="navbar navbar-expand-lg navbar-dark   fixed-top bg-dark">
-            <div class="container">
-                <img src="public/assets/images/harkup3.png" alt="HarkUp">
-                <a href="#" class="btn btn-success" id="menu-toggle">Toggle Menu</a>
-                <!--TOGGLE BUTTON FUNCTION-->
-
-                <div id="user_div" class="nav-item"></div>
-                <div id="login_div" class="nav-item">
-                    <form class="form-inline">
-                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#register">Log In</button>
-                        <p class="or">-</p>
-                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#signup">Sign Up</button>
-                    </form>
-                </div>
+    <form method="POST" action="/article">
+        <div class="input-group input-group-lg">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-lg">URL here:</span>
             </div>
-        </nav>
-        <!--END NAVBAR-->
-
-        <!-- SIDEBAR -->
-        <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <li class="sidebar-brand">
-                    <a href="#">
-                        Start Bootstrap
-                    </a>
-                </li>
-                <li>
-                    <a href="#">Dashboard</a>
-                </li>
-                <li>
-                    <a href="#">Shortcuts</a>
-                </li>
-                <li>
-                    <a href="#">Overview</a>
-                </li>
-                <li>
-                    <a href="#">Events</a>
-                </li>
-                <li>
-                    <a href="#">About</a>
-                </li>
-                <li>
-                    <a href="#">Services</a>
-                </li>
-                <li>
-                    <a href="#">Contact</a>
-                </li>
-                <li>
-                    <a href="#" class="btn btn-success " id="SignOut"> SIGN OUT </a>
-                </li>
-            </ul>
-
+            <input id="url" name="url" type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+            <input class="btn btn-primary" type="submit" id="submit" value="Submit">
         </div>
     </form>
 </div>
