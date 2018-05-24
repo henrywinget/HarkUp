@@ -13,7 +13,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/courtneydm/project-two.git"
+        "url": "https://github.com/henrywinget/HarkUp"
     },
     "keywords": [
         "harkup",
@@ -23,9 +23,9 @@
     "author": "Courtney Montgomery",
     "license": "ISC",
     "bugs": {
-        "url": "https://github.com/courtneydm/project-two/issues"
+        "url": "https://github.com/henrywinget/HarkUp"
     },
-    "homepage": "https://github.com/courtneydm/project-two#readme",
+    "homepage": "https://github.com/henrywinget/HarkUp",
     "dependencies": {
         "body-parser": "^1.18.3",
         "express": "^4.16.3",
