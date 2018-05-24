@@ -4,7 +4,7 @@
     "description": "an application that will convert articles into readability text, allowing TTS playback",
     "main": "server.js",
     "engines": {
-        "node": "6.11.1"
+        "node": "8.11.0"
       },
     "scripts": {
         "test": "test",
