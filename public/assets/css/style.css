@@ -1,6 +1,6 @@
 body {
   overflow-x: hidden;
- background: url(unlaundered.jpg) no-repeat center center fixed; 
+ background: url("../images/IMG_95621.png") no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -19,8 +19,8 @@ button.lead {
 /* LOGO --------------------- */
 img {
     
-    height: 5%px;
-    width: 5%;
+    height: 30%px;
+    width: 30%;
   
 }
 
