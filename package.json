@@ -3,6 +3,9 @@
     "version": "1.0.0",
     "description": "an application that will convert articles into readability text, allowing TTS playback",
     "main": "server.js",
+    "engines": {
+        "node": "6.11.1"
+      },
     "scripts": {
         "test": "test",
         "start": "node server.js",
