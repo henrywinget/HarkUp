@@ -12,9 +12,7 @@ router.get("/", (req, res) => {
     console.log(`Home page requested. ${req.body.params}`);
     res.render("index");
 });
-router.get("/favicon.ico", (req, res) => {
-    res.send("/assets/images/harkupfav.png");
-})
+
 // Route handler for getting the signup page
 router.get("/signup", (req, res) => {
     res.render("signup");
