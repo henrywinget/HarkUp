@@ -1,24 +1,127 @@
- {{#if this.user_email}}
-<div class="jumbotron">
-    <h1 class="display-4">Welcome back, {{this.user_email}}!</h1>
-    <p class="lead">Focus on the journey while you learn on the go.</p>
-    <hr class="my-4">
-    <p>Just paste your url in the space below and be free from distraction.</p>
-    <div class="lead">
-        <button class="btn btn-primary btn-sm" id="logout-btn" role="button">Log Out</button>
-    </div>
-</div>
+{{#if this.user_email}}
+    <div id="wrapper" class="toggled">
+
+        <!-- SIDEBAR -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                        {{this.user_email}}
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">Dashboard</a>
+                </li>
+                <li>
+                    <a href="#">Saved URL</a>
+                </li>
+                <li>
+                    <a href="#">Overview</a>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+                <li>
+
+                    <li>
+                        <a href="#" id="logout-btn">Log Out</a>
+                        {{!-- <button class="btn btn-primary btn-sm" id="logout-btn" role="button">Log Out</button> --}}
+                    </li>
+
+                    {{!-- <a href="#" class="btn btn-success " id="SignOut"> SIGN OUT </a> --}}
+                </li>
+            </ul>
+
+        </div>
+        <!-- /#sidebar-wrapper -->
+        <div class="jumbotron jumbotron-fluid">
+            <a href="#" class="btn btn-success" id="menu-toggle">Toggle Sidebar</a>
+
+            <div class="container">
+                <h1 class="display-4">Welcome back, {{this.user_email}}!</h1>
+                <p class="lead">Focus on the journey while you learn on the go.</p>
+                <hr class="my-4">
+                <p>Just paste your url in the space below and be free from distraction.</p>
+            </div>
+
+            {{!-- <div class="lead">
+                <button class="btn btn-primary btn-sm" id="logout-btn" role="button">Log Out</button>
+            </div> --}}
+
+        </div>
 {{else}}
-<div class="jumbotron">
-    <h1 class="display-4">HarkUp - Handlebars template</h1>
-    <p class="lead">Focus on the journey while you learn on the go.</p>
-    <hr class="my-4">
-    <p>Just paste your url in the space below and be free from distraction.</p>
-    <div class="lead">
-        <button class="btn btn-primary btn-sm" id="login-btn" role="button">Log In</button>
-        <a href="/signup">
-            <button class="btn btn-primary btn-sm" id="signup" role="button">Sign Up</button>
-        </a>
+    <div class="jumbotron jumbotron-fluid">
+        <h1 class="display-4">HarkUp - Handlebars template</h1>
+        <p class="lead">Focus on the journey while you learn on the go.</p>
+        <hr class="my-4">
+        <p>Just paste your url in the space below and be free from distraction.</p>
+        <div class="lead">
+            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#login_modal" id="login-btn" role="button">Log In</button>
+
+            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#signup_modal" id="signup">Sign Up</button>
+
+        </div>
     </div>
-</div>
+    <!-- The Login In Modal -->
+    <div class="modal" id="login_modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Modal Heading</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div id="firebaseui-auth-container"></div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- The Sign Up Modal -->
+    <div class="modal" id="signup_modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">New User Signup</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="container">
+                    <form class="container lead">
+                        <div class="form-group">
+                            <label for="full_name">Full Name</label>
+                            <input type="email" class="form-control" id="full_name" aria-describedby="emailHelp" placeholder="First & Last Name">
+
+
+                            <label for="email">Email address</label>
+                            <input type="email" class="form-control" id="user_email" placeholder="Enter your email">
+
+                            <label for="pwd">Password</label>
+                            <input type="password" class="form-control" id="user_password" aria-placeholder="Choose a password...">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" id="signup-btn">Sign Up</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                    </form>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <small id="emailSignHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 {{/if}}

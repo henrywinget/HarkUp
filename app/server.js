@@ -1,6 +1,8 @@
 // Dependencies
 const bodyParser = require("body-parser");
 const express = require("express");
+// const firebase = require("firebase");
+// const firebaseui = require("firebaseui");
 const handlebars = require("express-handlebars");
 const path = require("path");
 const routes = require("./controllers/articleRoutes");

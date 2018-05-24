@@ -1,17 +1,78 @@
-{{!--
-<div class="jumbotron">
-    <h1 class="display-4">HarkUp - Handlebars template</h1>
-    <p class="lead">Focus on the journey while you learn on the go.</p>
-    <hr class="my-4">
-    <p>Just paste your url in the space below and be free from distraction.</p>
-    <div class="lead">
-        <button class="btn btn-primary btn-sm" id="login-btn" role="button">Log In</button>
-        <button class="btn btn-primary btn-sm" id="logout-btn" role="button">Log Out</button>
-        <a href="/signup">
-            <button class="btn btn-primary btn-sm" id="signup" role="button">Sign Up</button>
-        </a>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4">HarkUp - Handlebars template</h1>
+        <p class="lead">Focus on the journey while you learn on the go.</p>
+        <hr class="my-4">
+        <p>Just paste your url in the space below and be free from distraction.</p>
+        <div class="lead">
+            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#login_modal" id="login-btn" role="button">Log In</button>
+
+            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#signup_modal" id="signup">Sign Up</button>
+
+        </div>
     </div>
-</div> --}} {{>users}}
+    <!-- The Login In Modal -->
+    <div class="modal" id="login_modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Select Sign In Method</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body :: FIREBASE AUTH UI-->
+                <div id="firebaseui-auth-container"></div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- The Sign Up Modal -->
+    <div class="modal" id="signup_modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">New User Signup</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <!-- Modal body -->
+                <div class="container">
+                    <form class="container lead" method="GET" action="/user">
+                        <div class="form-group">
+                            <label for="full_name">Full Name</label>
+                            <input type="input" class="form-control" id="full_name" aria-placeholder="First & Last Name">
+
+                            <label for="email">Email address</label>
+                            <input type="email" class="form-control" id="user_email" placeholder="Enter your email">
+
+                            <label for="pwd">Password</label>
+                            <input type="password" class="form-control" id="user_password" aria-placeholder="Choose a password...">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" id="signup-btn">Sign Up</button>
+
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <small id="emailSignHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{{>articles}}
 <div class="container">
 
     <form method="POST" action="/article">
@@ -23,7 +84,9 @@
             <input class="btn btn-primary" type="submit" id="submit" value="Submit">
         </div>
     </form>
+
 </div>
 <!-- Include Articles partial-->
-{{!-- Create a Handlebars if statement to check the value of the user's email. --}} {{!-- If guest, don't display logout
-button. --}} {{!-- if logged in, don't display login button or sign up button --}}
+{{!-- Create a Handlebars if statement to check the value of the user's email. --}}
+{{!-- If guest, don't display logout
+button. --}}{{!-- if logged in, don't display login button or sign up button --}}

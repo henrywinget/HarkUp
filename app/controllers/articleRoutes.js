@@ -9,8 +9,8 @@ let user_email = null;
 
 // Route handler for displaying default homepage
 router.get("/", (req, res) => {
-    console.log("Home page requested.");
-    res.render("index", { user_email: user_email });
+    console.log(`Home page requested. ${req.body.params}`);
+    res.render("index");
 });
 
 // Route handler for getting the signup page
@@ -46,7 +46,7 @@ async function getArticle(req, res, url) {
 // Page to load when authentiation is successful
 router.get("/user", (req, res) => {
     console.log(`/user req.body: ${JSON.stringify(req.body)}`);
-    res.render("index", { user_email: user_email });
+    return res.render("user", { user_email: user_email });
 });
 
 // Route handler to add new user to database
@@ -55,8 +55,9 @@ router.post("/api/signup", (req, res) => {
     console.log(req.body);
     orm.createNewUser(req.body, result => {
         console.log("Successfully added new user.");
-        res.send(result);
+        console.log(`Results: ${result}`);
     });
+    return res.send(result);
 });
 
 // Route for handling existing users signin
@@ -68,8 +69,12 @@ router.post("/signed_in", (req, res) => {
     res.render("index", { user_email: user_email });
 });
 
-// Route for handling saved list requests
-router.post("/updates", (req, res) => {
+// Route for getting user dashboard
+router.get("/user/dashboard", (req, res) => {
+    orm.getUserPreference(user_email, (data) => {
+        console.log(`returned from query.${JSON.stringify(data, null, 2)}`);
+        res.render("dashboard", { user: data });
+    });
 
 });
 

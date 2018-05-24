@@ -1,0 +1,50 @@
+<div id="wrapper" class="toggled">
+    <!-- SIDEBAR -->
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand">
+                <a href="#">
+                    {{this.user_email}}
+                </a>
+            </li>
+            <li>
+                <a href="/user/dashboard" method="get" id="dashboard">Dashboard</a>
+
+            </li>
+            <li>
+                <a href="#" id="saved_url">Saved URL</a>
+            </li>
+            <li>
+                <a href="/user">Overview</a>
+            </li>
+            <li>
+                <a href="#">Contact</a>
+            </li>
+            <li>
+
+                <li>
+                    <a href="/" id="logout-btn">Log Out</a>
+                    {{!-- <button class="btn btn-primary btn-sm" id="logout-btn" role="button">Log Out</button> --}}
+                </li>
+
+                {{!-- <a href="#" class="btn btn-success " id="SignOut"> SIGN OUT </a> --}}
+            </li>
+        </ul>
+
+    </div>
+    <!-- /#sidebar-wrapper -->
+    <div class="jumbotron jumbotron-fluid">
+        <a href="#" class="btn btn-success" id="menu-toggle">Toggle Sidebar</a>
+
+        <div class="container">
+            <h1 class="display-4">Welcome back, {{this.user_email}}!</h1>
+            <p class="lead">Focus on the journey while you learn on the go.</p>
+            <hr class="my-4">
+            <p>Just paste your url in the space below and be free from distraction.</p>
+        </div>
+        {{!-- <div class="lead">
+                <button class="btn btn-primary btn-sm" id="logout-btn" role="button">Log Out</button>
+            </div> --}}
+
+    </div>
+    {{> articles}}
