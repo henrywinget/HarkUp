@@ -1,0 +1,143 @@
+{{#if this.user_email}}
+<div class="jumbotron">
+    <h1 class="display-4">Welcome back, {{this.user_email}}!</h1>
+    <p class="lead">Focus on the journey while you learn on the go.</p>
+    <hr class="my-4">
+    <p>Just paste your url in the space below and be free from distraction.</p>
+    <div class="lead">
+        <button class="btn btn-primary btn-sm" id="logout-btn" role="button">Log Out</button>
+    </div>
+</div>
+<div class="container">
+
+    <form method="POST" action="/article">
+        <div class="input-group input-group-lg">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-lg">URL here:</span>
+            </div>
+            <input id="url" name="url" type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+            <input class="btn btn-primary" type="submit" id="submit" value="Submit">
+        </div>
+    </form>
+
+    <!-- SIDEBAR -->
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand">
+                <a href="#">
+                    {{this.user_email}}
+                </a>
+            </li>
+            <li>
+                <a href="#">Settings</a>
+            </li>
+            <li>
+                <a href="#">URLs</a>
+            </li>
+            <li>
+                <a href="#" class="btn btn-success " id="SignOut"> SIGN OUT </a>
+            </li>
+        </ul>
+
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <a href="#" class="btn btn-success" id="menu-toggle">Toggle Menu</a>
+</div>
+{{> articles}} {{else}}
+<div>
+<div class="jumbotron">
+    <h1 class="display-4">HarkUp - Guest Mode</h1>
+    <p class="lead">Focus on the journey while you learn on the go.</p>
+    <hr class="my-4">
+    <p>Just paste your url in the space below and be free from distraction.</p>
+    <div id="login_div" class="nav-item">
+        <form class="form-inline">
+            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#register">Log In</button>
+            <p class="text-dark">-</p>
+            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#signup-modal">Sign Up</button>
+        </form>
+    </div>
+</div>
+<form method="POST" action="/article">
+    <div class="input-group input-group-lg">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-lg">URL here:</span>
+        </div>
+        <input id="url" name="url" type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+        <input class="btn btn-primary" type="submit" id="submit" value="Submit">
+    </div>
+</form>
+
+<!--Login Modal -->
+
+<div class="modal fade text-dark" id="register" tabindex="5" role="dialog" aria-labelledby="register form" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Log In</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- inputting form-->
+                <div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" class="form-control" id="email_field" aria-describedby="emailHelp" placeholder="Enter email">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" class="form-control" id="password_field" placeholder="Password">
+                    </div>
+                    <button onclick="login()" type="submit" class="btn btn-primary">Log In</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Sign up modal -->
+
+<div class="modal fade text-dark" id="signup-modal" tabindex="-1" role="dialog" aria-labelledby="signup form" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Sign Up</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- inputting form-->
+                <div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">First Name</label>
+                        <input type="email" class="form-control" id="email_sign" aria-describedby="emailHelp" placeholder="Enter First Name">
+                        <label for="exampleInputEmail1">Last Name </label>
+                        <input type="email" class="form-control" id="email_sign" aria-describedby="emailHelp" placeholder="Enter Last Name">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" class="form-control" id="email_sign" aria-describedby="emailHelp" placeholder="Enter email">
+                        <small id="emailSignHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Choose Username</label>
+                        <input type="email" class="form-control" id="email_sign" aria-describedby="emailHelp" placeholder="Enter User Name">
+
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" class="form-control" id="password_sign" placeholder="Password">
+                    </div>
+
+                    <button onclick="signUp()" type="submit" class="btn btn-primary">Sign Up</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+</div>
+{{> articles}} {{/if}}

@@ -1,30 +1,12 @@
 {{!-- ARTICLE SECTION HERE --}}
-<br> {{!--
+<br> 
 <div id="article">
     <article class="container">
         <input id="play" type='button' value='🔊 Play' />
         <h2 id="article-title">{{this.title}}</h2>
         <p id="article-content">{{this.article}}</p>
     </article>
-</div> --}}
-<input id="play" type='button' value='🔊 Play' />
-<div id="article">
-    <div id="accordion">
-        <div class="card">
-            <div class="card-header" id="headingOne">
-                <h5 class="mb-0">
-                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"
-                        id="article-title">
-                        {{this.title}}
-                    </button>
-                </h5>
-            </div>
-            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-                <div class="card-body">
-                    <p id="article-content">{{this.article}}</p>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
-{{!-- END OF ARTICLE SECTION --}}
+
+
+ {{!-- END OF ARTICLE SECTION --}}

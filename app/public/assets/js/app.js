@@ -39,7 +39,7 @@ $(() => {
         // Initialize sign-in widget from FirebaseUI web
         var uiConfig = {
             // signInSuccessURL will load whenever user signs in, based on auth state change
-            signInSuccessUrl: "/user",
+            signInSuccessUrl: "index",
             signInOptions: [
                 // Leave the lines as is for the providers you want to offer your users.
                 firebase.auth.GoogleAuthProvider.PROVIDER_ID,
@@ -93,7 +93,7 @@ $(() => {
             console.log(`User Email: ${JSON.stringify(firebaseUser.email)}`);
 
             // send the data to the server to be used in handlebars templates
-            $.post("/signed_in", user);
+            $.post("index", user);
         }
         else { console.log("No user logged in."); }
         // console.log("Not logged in");
@@ -103,7 +103,12 @@ $(() => {
     $("#logout-btn").on("click", (e) => {
         console.log("logout button clicked.");
         const user = { user_email: null };
-        $.post("/signed_in", user);
+        $.post("/index", user);
         firebase.auth().signOut();
+    });
+
+    $("#menu-toggle").click(function (e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
     });
 });

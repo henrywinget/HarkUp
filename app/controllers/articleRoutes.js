@@ -10,7 +10,7 @@ let user_email = null;
 // Route handler for displaying default homepage
 router.get("/", (req, res) => {
     console.log("Home page requested.");
-    res.render("index", { user_email: user_email });
+    res.render("partials/index", { user_email: user_email });
 });
 
 // Route handler for getting the signup page
@@ -35,18 +35,18 @@ async function getArticle(req, res, url) {
             }
             article.close();
             console.log(`SUCCESS`);
-            return res.render("index", content);
+            return res.render("partials/index", content);
         });
     } catch (error) {
         console.log(`Error Logged: ${error}`);
     }
 
-}
+};
 
 // Page to load when authentiation is successful
 router.get("/user", (req, res) => {
     console.log(`/user req.body: ${JSON.stringify(req.body)}`);
-    res.render("index", { user_email: user_email });
+    res.render("partials/index", { user_email: user_email });
 });
 
 // Route handler to add new user to database
