@@ -139,3 +139,12 @@ body {
     margin-right: 0;
   }
 }
+
+body {
+  overflow-x: hidden;
+ background: url(unlaundered.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
