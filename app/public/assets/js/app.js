@@ -85,10 +85,10 @@ $(() => {
         const promise = auth.createUserWithEmailAndPassword(newUser.user_email, newUser.user_password);
         promise.catch(err => alert(err.message));
 
-        // Send form data to the server
-        // $.post("/api/signup", newUser).then(data => {
-        //     console.log(`Created new user.`);
-        // });
+        Send form data to the server
+        $.post("/api/signup", newUser).then(data => {
+            console.log(`Created new user.`);
+        });
     });
 
     // Event listener for when the user state changes
@@ -130,8 +130,9 @@ $(() => {
         });
     });
 
-    $("#submit").on("click", (e) => {
-        $("articles-here").attr("hidden", "show");
+    // $("#submit").on("click", (e) => {
+    //     $("#articles-here").removeAttr("hidden");
 
-    });
+    // });
+
 });
