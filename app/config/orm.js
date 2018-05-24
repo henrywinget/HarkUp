@@ -78,7 +78,7 @@ const orm = {
         const info = createInfoObj();
         const articles = createArticleObj();
 
-        const queryString = `SELECT ${info.id}, ${info.name}, ${info.email},`;
+        let queryString = `SELECT ${info.id}, ${info.name}, ${info.email},`;
         queryString += `${articles.website}, ${articles.date_added} `;
         queryString += `FROM ${info_table} LEFT JOIN ${article_table}`;
         queryString += `ON ${info.email} = ${articles.email}`;
@@ -93,18 +93,30 @@ const orm = {
     },
     // Get the preferences for a user based on their email address
     getUserPreference: (email, cb) => {
+        console.log(`Preference, email passed: ${email}`);
+        const info_table = "user_info";
         const pref_table = "user_preferences";
-        const info = createInfoObj();
-        const preferences = createPrefObj();
 
-        const queryString = `SELECT ${info.id}, ${info.name}, ${info.email},`;
-        queryString += `${preferences.voice}, ${preferences.reason}, ${preferences.signup_date}`;
-        queryString += `FROM ${info_table} LEFT JOIN ${pref_table}`
-        queryString += `ON ${info.email} = ${preferences.email}`;
-        queryString += `WHERE ${info.email} = ${email}`;
+        const info = {
+            id: `${info_table}.user_id`,
+            name: `${info_table}.full_name`,
+            email: `${info_table}.user_email`,
+            signup_date: `${info_table}.signup_date`
+        };
+        const preferences = {
+            email: `${pref_table}.user_email`,
+            voice: `${pref_table}.voice_preference`,
+            reason: `${pref_table}.signup_reason`,
+            signup_date: `${pref_table}.signup_date`
+        };
+
+        let queryString = `SELECT ${info.id}, ${info.name}, ${info.email},`;
+        queryString += `${preferences.voice}, ${preferences.reason}, ${preferences.signup_date} `;
+        queryString += `FROM ${info_table} LEFT JOIN ${pref_table} ON ${info.email} = ${preferences.email} WHERE ${info.email} = '${email}'`;
 
         mysql.query(queryString, (err, result) => {
             if (err) { throw err; }
+            console.log("Query result:" + JSON.stringify(result, null, 2));
             cb(result);
         });
 
@@ -124,7 +136,7 @@ const orm = {
         const articles = createArticleObj();
         const preferences = createPrefObj();
 
-        const queryString = `DELETE ${info_table}, ${article_table}, ${pref_table}`;
+        let queryString = `DELETE ${info_table}, ${article_table}, ${pref_table}`;
         queryString += `FROM ${info_table}`;
         queryString += `INNER JOIN ${pref_table}`;
         queryString += `ON ${info.email} = ${preferences.email}`;

@@ -1,0 +1,13 @@
+<div class="dashboard">
+    <ul>
+        {{#each user}}
+            <li>ID: {{this.user_id}}</li>
+            <li>Full Name: {{this.user_name full_name}}</li>
+            <li>User Email: {{this.user_email}}</li>
+            <li>Voice Preference: {{this.voice_preference}}</li>
+            <li>Sign-up Reason: {{this.signup_reason}}</li>
+            <li>Sign-up Date: {{this.signup_date}}</li>
+        {{/each}}
+    </ul>
+
+</div>

@@ -10,7 +10,7 @@ WHERE user_info.user_email = 'Courtney@email.com';
 SELECT user_info.user_id, user_info.full_name, user_info.user_email, user_preferences.voice_preference, user_preferences.signup_reason, user_preferences.signup_date
 FROM user_info LEFT JOIN user_preferences
 ON user_info.user_email = user_preferences.user_email
-WHERE user_info.full_name = 'Courtney Montgomery';
+WHERE user_info.user_email = 'Courtney@email.com';
 
 
 -- Use the following query to update specified user's details in multiple tables - column values can be interchaged based on field to update
@@ -28,6 +28,6 @@ INNER JOIN user_preferences ON user_info.user_email = user_preferences.user_emai
 INNER JOIN user_articles ON user_info.user_email = user_articles.user_email
 WHERE user_info.user_email = user_preferences.user_email
 AND user_preferences.user_email = user_articles.user_email
-AND user_info.user_email = 'Test@test.com';
+AND user_info.user_email = 'useruser@user.com';
 
 SELECT * FROM user_articles;
