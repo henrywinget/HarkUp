@@ -25,3 +25,4 @@ user_name VARCHAR(32),
 website_url VARCHAR(255) NOT NULL DEFAULT "",
 date_added DATETIME NOT NULL
 );
+
