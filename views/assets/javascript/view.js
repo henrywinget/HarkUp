@@ -6,7 +6,7 @@
 //     host: "localhost",
 //     port: 3306,
 //     user: "root",
-//     password: "HLWxs20",
+//     password: "",
 //     database: "HarkUp"
 // });
 // // // Establish MySQL connection    

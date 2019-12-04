@@ -8,11 +8,11 @@ if (process.env.JAWSDB_URL) {
     // connection = mysql.createConnection(process.env.JAWSDB_URL);
     connection = mysql.createConnection("mysql://a8cvv8e793ilfmxb:vurbjc4p9c4smxew@cig4l2op6r0fxymw.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/pb3kycf2wo314bl0");
 } else {
- connection = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "HLWxs20",
-    database: "HarkUp"
+    connection = mysql.createConnection({
+        host: "localhost",
+        user: "root",
+        password: "",
+        database: "HarkUp"
     });
 }
 // // Establish MySQL connection    
