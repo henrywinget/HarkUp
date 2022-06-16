@@ -30,7 +30,7 @@
         "body-parser": "^1.18.3",
         "dotenv": "^16.0.1",
         "express": "^4.16.3",
-        "express-handlebars": "^3.0.0",
+        "express-handlebars": "^5.3.1",
         "firebaseui": "^3.0.0",
         "mysql": "^2.15.0",
         "node-readability": "^3.0.0",
