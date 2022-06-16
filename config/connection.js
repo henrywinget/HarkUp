@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 // // Dependencies for MySQL connection
 const mysql = require("mysql");
 
@@ -5,23 +7,22 @@ const mysql = require("mysql");
 var connection = "";
 
 if (process.env.JAWSDB_URL) {
-    // connection = mysql.createConnection(process.env.JAWSDB_URL);
-    connection = mysql.createConnection("mysql://a8cvv8e793ilfmxb:vurbjc4p9c4smxew@cig4l2op6r0fxymw.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/pb3kycf2wo314bl0");
+  connection = mysql.createConnection(process.env.JAWSDB_URL);
 } else {
-    connection = mysql.createConnection({
-        host: "localhost",
-        user: "root",
-        password: "",
-        database: "HarkUp"
-    });
+  connection = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "",
+    database: "HarkUp",
+  });
 }
-// // Establish MySQL connection    
+// // Establish MySQL connection
 connection.connect(function (err) {
-    if (err) throw err;
-    console.log(`My SQL connection established...thread ID: ${connection.threadId}`);
+  if (err) throw err;
+  console.log(
+    `My SQL connection established...thread ID: ${connection.threadId}`
+  );
 });
-
-
 
 // // Export MySQL connection to be used by server
 module.exports = connection;
